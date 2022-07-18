@@ -8,14 +8,14 @@ import NotificationButton from '../NotificationButton';
 import './style.css';
 
 function SalesCard() {
-    const min = new Date();
-    const max = new Date();
+   const min = new Date(new Date().setDate(new Date().getDate() - 365));
+  const max = new Date();
 
     const [minDate, setMinDate] = useState(min);
     const [maxDate, setMaxDate] = useState(max);
 
 
-    const [slaes, setSales] = useState<Sale[]>([]);
+    const [sales, setSales] = useState<Sale[]>([]);
 
     useEffect(() => {
 
@@ -55,21 +55,22 @@ function SalesCard() {
 
             <div>
                 <table className="dsmeta-sales-table">
-                    <thead>
-                        <tr>
-                            <th className="show992">ID</th>
-                            <th className="show576">Data</th>
-                            <th>Vendedor</th>
-                            <th className="show992">Visitas</th>
-                            <th className="show992">Vendas</th>
-                            <th>Total</th>
-                            <th>Notificar</th>
-                        </tr>
-                    </thead>
+                
+                <thead>
+                  <tr>
+                    <th className="show992">ID</th>
+                    <th className="show576">Data</th>
+                    <th>Vendedor</th>
+                    <th className="show992">Visitas</th>
+                    <th className="show992">Vendas</th>
+                    <th>Total</th>
+                    <th>Notificar</th>
+                  </tr>
+                </thead>
                     <tbody>
-                        {slaes.map(sale => {
+                        {sales.map(sale => {
                             return (
-                                <tr key = {sale.id}>
+                                <tr key={sale.id}>
                                     <td className="show992">{sale.id}</td>
                                     <td className="show576">{new Date(sale.date).toLocaleDateString()}</td>
                                     <td>{sale.sellerName}</td>
